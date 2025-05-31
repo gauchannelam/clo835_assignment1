@@ -23,10 +23,10 @@ jobs:
 
       - name: Build and Push Web App Image
         run: |
-          docker build -t ${{ secrets.ECR_WEBAPP_URI }}:latest ./webapp
+          docker build -t ${{ secrets.ECR_MYSQL_URI }}:latest -f Dockerfile_mysql .
           docker push ${{ secrets.ECR_WEBAPP_URI }}:latest
 
       - name: Build and Push MySQL Image
         run: |
-          docker build -t ${{ secrets.ECR_MYSQL_URI }}:latest ./mysql
+          docker build -t ${{ secrets.ECR_MYSQL_URI }}:latest -f Dockerfile_mysql ./mysql
           docker push ${{ secrets.ECR_MYSQL_URI }}:latest
